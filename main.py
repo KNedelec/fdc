@@ -37,9 +37,12 @@ def run():
           print(f"could not create the directory {tpls_dir}. error: {err}")
           return
 
+    def get_tplsdir():
+      return tpls_dir
+
     def create_template():
         template = prompt_create_template()
-        write_template(template)
+        write_template(get_tplsdir(), template)
         print("create template...", template)
 
     def list_template():

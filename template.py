@@ -1,20 +1,21 @@
 from formatter import *
+from os.path import join
 
 def prompt_create_template():
     field_number = 1
-    lastchars = input("name")
+    lastchars = input("name: ")
     template = []
     while lastchars:
         template.append(lastchars)
         if lastchars == "_q":
             return []
         field_number += 1
-        lastchars = input(f"field name {field_number}: ")
+        lastchars = input(f"field {field_number - 1}: ")
 
     return template
 
-def write_template(template):
-    wfile_name = f"{template[0]}.sik"
+def write_template(dir, template):
+    wfile_name = f"{join(dir, template[0])}.sik"
     try:
         with open(wfile_name, mode="w") as wfile:
             print(format_list(template), file=wfile)

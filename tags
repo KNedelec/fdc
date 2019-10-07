@@ -6,8 +6,10 @@
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	0.0.0	/c45511a/
 create_template	main.py	/^    def create_template():$/;"	f	function:run	file:
+format_list	formatter.py	/^def format_list(list):$/;"	f
 get_menu	main.py	/^    def get_menu(chosen_menu):$/;"	f	function:run	file:
 get_menuhandler	main.py	/^    def get_menuhandler(chosen_menu):$/;"	f	function:run	file:
 list_template	main.py	/^    def list_template():$/;"	f	function:run	file:
 prompt_create_template	template.py	/^def prompt_create_template():$/;"	f
 run	main.py	/^def run():$/;"	f
+write_template	template.py	/^def write_template(template):$/;"	f
