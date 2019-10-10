@@ -1,5 +1,6 @@
 from os import walk, getcwd, makedirs
 from os.path import isfile, isdir, join
+from re import match
 
 from template import *
 from fs import *
@@ -20,14 +21,21 @@ def run():
     get_tpldir = get_tplpath_fn(app_args)
     if ensure_dir(get_tpldir())[0] == 1: return
 
-    create_template = get_createtemplate_fn(get_tpldir)
-    list_template = get_listtemplate_fn(get_tpldir)
+    # function to get the data directory path
+    get_datadir = get_datapath_fn(app_args)
+    if ensure_dir(get_datadir())[0] == 1: return
+
+    create_template = get_createtemplate_fn(get_tpldir, get_datadir)
+    print_list_template = get_print_listtemplates_fn(get_tpldir)
+    add_data = get_adddata_fn(get_tpldir, get_datadir)
 
     mainmenu_list = {
+        "help": ( "[command] show help",
+          lambda option: show_help(mainmenu_list, option)),
         "ct": ( "[name, [field1, [field2, [...]]] Create template",
-          create_template),
-        "lt": ( "List templates", list_template),
-        "dt": ( "delete templates", list_template),
+          create_template ),
+        "lt": ( "List templates", print_list_template ),
+        "ad": ( "template_name", add_data ),
     }
 
     def get_menu(chosen_menu):
@@ -42,20 +50,29 @@ def run():
 
 
     while True:
-      # main menu
-      for key in mainmenu_list:
-          item_name = mainmenu_list[key][0]
-          print(f"{key}: {item_name}")
-      chosen_menu = input("Please chose an action: ")
+      chosen_menu = input(":")
       if chosen_menu is "q":
         return
 
       chosen_menu, *options = parse_mainmenu_choice(chosen_menu)
-      print(f"chosen: {chosen_menu}, options: {options}")
 
       returnkey = get_menuhandler(chosen_menu)(options)
       if returnkey == "q":
         return
 
+def show_help(mainmenu_list, options):
+    '''
+    Show the list of commands
+    '''
+    if not len(options) == 1:
+      option = ""
+    else:
+        option = options[0]
+    for key in mainmenu_list:
+        item_name = mainmenu_list[key][0]
+        if match(option, item_name) or match(option, key):
+          print(f"{key}: {item_name}")
+
+    print("\n")
 
 run()
