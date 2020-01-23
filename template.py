@@ -94,8 +94,8 @@ def get_adddata_fn(get_tpldir, get_datadir):
             while True:
                 new_data = prompt_create_data(template)
                 update_data_file(get_datadir, template_name, new_data)
-                subprocess.run(["git", "add", get_data_path(get_datadir, template_name)])
-                subprocess.run(["git",  "commit", f"-m data ${new_data} added to ${template_name}"])
+                subprocess.run(["git", "add", get_data_path(get_datadir, template_name)], cwd=get_datadir())
+                subprocess.run(["git",  "commit", f"-m data ${new_data} added to ${template_name}"], cwd=get_datadir())
         except KeyboardInterrupt as err:
             return
 

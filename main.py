@@ -35,7 +35,7 @@ def run():
         "ct": ( "[name, [field1, [field2, [...]]] Create template",
           create_template ),
         "lt": ( "List templates", print_list_template ),
-        "ad": ( "template_name", add_data ),
+        "ad": ( "[template_name] Add items from a template", add_data ),
     }
 
     def get_menu(chosen_menu):
