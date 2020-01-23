@@ -1,5 +1,5 @@
 
-#functionalities
+# functionalities
 
 - create a template
 - add an item from a template
@@ -7,16 +7,16 @@
 - list items
 - auto git commit
 
-#run
+# run
 
 python main.py
 
-#arguments
+# arguments
 
 --dir - change root directory
 
-#options
-help - list commands
-ct - create template
-ad - add data
-lt - list data
+# options
+help - list commands  
+ct - create template  
+ad - add data  
+lt - list data  
