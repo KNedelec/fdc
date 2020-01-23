@@ -44,12 +44,12 @@ def read_file(file_path):
         return get_fserror_code(file = file_path)
 
 
-def get_basepath_fn(app_rgs):
+def get_basepath_fn(app_args):
     '''
     return a getter for the base path
     app_args -- a dict containing the app config containing the "dir" value
     '''
-    return lambda: app_rgs["dir"]
+    return lambda: app_args["dir"]
 
 
 def get_tplpath_fn(app_args):

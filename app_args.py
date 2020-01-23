@@ -17,7 +17,7 @@ def get_appargs():
     if not dir_arg:
       dir_arg = "./"
 
-    dir = abspath(join(getcwd(), dir_arg))
+    dir = abspath(join(getcwd(), dir_arg, 'fdc'))
 
     return { "dir": dir }
 
