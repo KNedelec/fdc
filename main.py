@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from os import walk, getcwd, makedirs
 from os.path import isfile, isdir, join
 from re import match
